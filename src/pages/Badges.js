@@ -2,13 +2,44 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './styles/Badges.css';
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 import confLogo from '../images/badge-header.svg';
 import BadgesList from '../components/BadgesList';
 
 class Badges extends React.Component {
-  state = {
-    data:[
+
+  
+  constructor(props){
+    console.log('1. constructor');
+    super(props);
+    this.state = {
+      data: [],
+    };
+  }
+
+componentDidUpdate(prevProps,prevState){
+  console.log('5. componentDidUpdate');
+  console.log({
+    prevProps: prevProps,
+    prevState: prevState,
+  });
+
+  console.log({
+    props: this.props,
+    state: this.state,
+  });
+}
+
+componentWillUnmount(){
+  console.log('6. componentWillMount');
+  clearTimeout(this.timeoutId);
+}
+
+componentDidMount(){
+console.log('3. componentDidMount');
+  this.timeoutId = setTimeout(() => {
+    this.setState({
+      data:[
       {
         "id": "2de30c42-9deb-40fc-a41f-05e62b5939a7",
         "firstName": "Freda",
@@ -36,9 +67,12 @@ class Badges extends React.Component {
         "twitter": "DaphneyTorphy96105",
         "avatarUrl": "https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon"
       }
-    ]
-  }
+      ]
+    });
+},3000);
+}
   render() {
+    console.log('2/4. render');
     return (
       <React.Fragment>
         <div className="Badges">
@@ -63,6 +97,7 @@ class Badges extends React.Component {
         </React.Fragment>
     );
   }
+
 }
 
 export default Badges;
