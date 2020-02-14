@@ -9,10 +9,14 @@
   display: flex;
   padding: 1rem;
 }
-.BadgesList a svg, .BadgesList a{
+.BadgesList a svg{
   fill: rgb(29, 161, 242);
   max-width: 20px;
   margin-right: 10px;
+}
+
+.BadgesList a{
+  fill: rgb(29, 161, 242);
 }
 .BadgesList p a{
   color: black;
