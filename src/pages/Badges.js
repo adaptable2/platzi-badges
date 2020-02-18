@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar';
 import confLogo from '../images/badge-header.svg';
 import BadgesList from '../components/BadgesList';
 import api from '../api';
+import PageLoading from '../components/PageLoading';
+import PageError from '../components/PageError';
 
 class Badges extends React.Component {
   state = {
@@ -32,11 +34,11 @@ fetchData = async () => {
 
   render() {
     if(this.state.loading === true){
-      return 'Loading ...';  
+      return <PageLoading/>;
     }
 
     if(this.state.error){
-      return `Error: ${this.state.error.message}`;  
+      return <PageError error={this.state.error}/>;
     }
     
     return (
@@ -57,6 +59,7 @@ fetchData = async () => {
           <div className="Badges__list">
             <div className="Badges__container BadgesList">
               <BadgesList badge={this.state.data} />
+              {console.log(this.state.data)}
             </div>
           </div>
         </div>
