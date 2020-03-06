@@ -26,6 +26,10 @@ const api = {
     list() {
       // throw new Error('Noud found');
       // return [];
+      // return callApi('/badges',{
+      //   method: 'POST',
+      //   body:json.stringify(badge),
+      // });
       return callApi('/badges');
     },
     create(badge) {
